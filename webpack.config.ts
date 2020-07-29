@@ -14,7 +14,7 @@ export default {
     entry: ['./client/index.tsx'],
     output: {
         path: BUILD_PATH,
-        publicPath: '/static/',
+        publicPath: '/',
         filename: `js/[name]${hashTemplate}.bundle.js`,
         chunkFilename: `js/[id]${hashTemplate}.bundle.js`
     },
