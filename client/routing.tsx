@@ -1,25 +1,17 @@
-import { Box, Fade } from '@material-ui/core';
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Redirect, Route, Switch } from 'react-router-dom';
 
 import { ROUTES } from '_client/consts';
+import { Error404 } from '_components/pages/error-page';
+import { TablePage } from '_components/pages/table-page';
 
-
-const PageTransitionHOC = (Component: React.ElementType) => (
-    () => (
-        <Fade mountOnEnter in>
-            <Box width="100%">
-                <Component />
-            </Box>
-        </Fade>
-    )
-);
 
 export default (
     <BrowserRouter>
         <Switch>
-            <Route path={ROUTES.TABLE} component={PageTransitionHOC(TablePage)} />
-            <Route component={PageTransitionHOC(Error404)} />
+            <Redirect exact from={ROUTES.ROOT} to={ROUTES.TABLE} />
+            <Route path={ROUTES.TABLE} component={TablePage} />
+            <Route component={Error404} />
         </Switch>
     </BrowserRouter>
 );
