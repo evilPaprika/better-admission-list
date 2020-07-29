@@ -16,16 +16,18 @@ import React, { memo, useEffect, useState } from 'react';
 import { Table } from '_components/common/Table';
 
 
-const proxyUrl = 'https://thingproxy.freeboard.io/fetch/';
+const proxyUrl = 'https://api.allorigins.win/get?url=';
 const baseApiUrl = 'https://urfu.ru/api/ratings/alphabetical/1/';
 const baseUrl = 'https://urfu.ru';
 
 async function fetchLetterPage(num: number): [] {
     const response = await fetch(proxyUrl + baseApiUrl + num);
     const data = await response.json();
+    const page = await fetch(proxyUrl + baseUrl + JSON.parse(data.contents).url);
+    const pagejson = await page.json();
 
-    const page = await fetch(proxyUrl + baseUrl + data.url);
-    const pagedata = await page.text();
+    // const pagedata = await page.text();
+    const pagedata = await pagejson.contents;
     const jsonTables = HtmlTableToJson.parse(pagedata);
 
     return jsonTables.results;

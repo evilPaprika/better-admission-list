@@ -9,7 +9,7 @@ import { TablePage } from '_components/pages/table-page';
 export default (
     <BrowserRouter>
         <Switch>
-            <Route path={ROUTES.TABLE} component={TablePage} />
+            <Route path={ROUTES.MAIN} component={TablePage} />
             <Route component={Error404} />
         </Switch>
     </BrowserRouter>
