@@ -8,19 +8,21 @@ import {
     Link,
     Typography
 } from '@material-ui/core';
-// @ts-ignore
-import HtmlTableToJson from 'html-table-to-json';
 import fetch from 'node-fetch';
 import React, { memo, useEffect, useState } from 'react';
 
+// @ts-ignore
 import { Table } from '_components/common/Table';
+
+
+const convert = require('../../../utils');
 
 
 const proxyUrl = 'https://api.allorigins.win/get?url=';
 const baseApiUrl = 'https://urfu.ru/api/ratings/alphabetical/1/';
 const baseUrl = 'https://urfu.ru';
 
-async function fetchLetterPage(num: number): [] {
+async function fetchLetterPage(num: number) {
     const response = await fetch(proxyUrl + baseApiUrl + num);
     const data = await response.json();
     const page = await fetch(proxyUrl + baseUrl + JSON.parse(data.contents).url);
@@ -28,9 +30,9 @@ async function fetchLetterPage(num: number): [] {
 
     // const pagedata = await page.text();
     const pagedata = await pagejson.contents;
-    const jsonTables = HtmlTableToJson.parse(pagedata);
+    const jsonTables = convert(pagedata);
 
-    return jsonTables.results;
+    return jsonTables;
 }
 
 
@@ -59,7 +61,7 @@ export const TablePage = memo(() => {
             <Table
                 columns={[
                     { field: 'Фамилия Имя Отчество', title: 'Фамилия Имя Отчество' },
-                    { field: 'Рег.№', title: 'Рег.№' },
+                    { field: 'Рег.№', title: 'Рег.№', type: 'numeric' },
                     { field: 'Состояние', title: 'Состояние' },
                     { field: 'Вид конкурса', title: 'Вид конкурса' },
                     { field: 'Заявление о согласиии на зачисление', title: 'Заявление о согласиии на зачисление' },

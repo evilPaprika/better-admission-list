@@ -49,6 +49,7 @@
     "axios": "^0.19.2",
     "axios-hooks": "^2.1.0",
     "babel-loader": "^8.0.6",
+    "cheerio": "^1.0.0-rc.3",
     "config": "^3.2.4",
     "config-webpack": "^1.0.4",
     "copyfiles": "^2.1.1",

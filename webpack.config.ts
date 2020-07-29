@@ -19,7 +19,7 @@ export default {
         chunkFilename: `js/[id]${hashTemplate}.bundle.js`
     },
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
         alias: {
             _client: path.resolve(PROJECT_ROOT, 'client/'),
             _components: path.resolve(PROJECT_ROOT, 'client/components/'),
