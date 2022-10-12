@@ -67,7 +67,7 @@
     "koa-send": "^5.0.0",
     "koa-static": "^5.0.0",
     "koa-webpack": "^5.2.4",
-    "material-table": "^1.66.0",
+    "material-table": "^1.69.3",
     "node-fetch": "^2.6.0",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
